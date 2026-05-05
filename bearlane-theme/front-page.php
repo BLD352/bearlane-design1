@@ -32,7 +32,7 @@ get_header();
 $builder_takeover = apply_filters( 'bearlane_front_page_builder_takeover', false );
 ?>
 
-<main id="site-content" class="front-page">
+<main id="site-content" class="front-page bld-homepage">
 
 	<?php if ( $builder_takeover ) : ?>
 

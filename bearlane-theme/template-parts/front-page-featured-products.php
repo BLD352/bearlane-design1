@@ -70,8 +70,8 @@ if ( empty( $products ) ) {
 }
 ?>
 
-<section class="section featured-products-section" aria-label="<?php esc_attr_e( 'Featured Products', 'bearlane' ); ?>">
-	<div class="container">
+<section class="bld-section section featured-products-section" aria-label="<?php esc_attr_e( 'Featured Products', 'bearlane' ); ?>">
+	<div class="bld-container container">
 
 		<header class="section__header">
 			<?php if ( $heading ) : ?>

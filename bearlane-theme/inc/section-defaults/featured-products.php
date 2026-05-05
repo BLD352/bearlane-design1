@@ -14,7 +14,7 @@ return [
 	'label'           => __( 'Featured Products', 'bearlane' ),
 	'description'     => __( 'Grid of WooCommerce products. Pick specific products or auto-query.', 'bearlane' ),
 	'icon'            => 'dashicons-star-filled',
-	'priority'        => 50,
+	'priority'        => 40,
 	'default_enabled' => false,
 	'template'        => 'template-parts/front-page-featured-products.php',
 	'fields'          => [

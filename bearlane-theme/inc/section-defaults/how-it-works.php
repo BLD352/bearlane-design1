@@ -16,7 +16,7 @@ return [
 	'label'           => __( 'How It Works', 'bearlane' ),
 	'description'     => __( 'Numbered step-by-step explainer for your ordering flow.', 'bearlane' ),
 	'icon'            => 'dashicons-editor-ol',
-	'priority'        => 30,
+	'priority'        => 50,
 	'default_enabled' => true,
 	'template'        => 'template-parts/front-page-how-it-works.php',
 	'fields'          => [

@@ -23,13 +23,13 @@ $submit_label  = (string) ( $content['submit_label'] ?? '' );
 $privacy_note  = (string) ( $content['privacy_note'] ?? '' );
 ?>
 
-<section class="section email-capture-section" aria-label="<?php esc_attr_e( 'Sign up for offers', 'bearlane' ); ?>">
-	<div class="container">
+<section class="bld-section section email-capture-section" aria-label="<?php esc_attr_e( 'Sign up for offers', 'bearlane' ); ?>">
+	<div class="bld-container container">
 		<div class="email-capture-inner">
 
 			<div class="email-capture__text">
 				<?php if ( $eyebrow ) : ?>
-				<div class="section__eyebrow section__eyebrow--accent"><?php echo esc_html( $eyebrow ); ?></div>
+				<div class="section__eyebrow bld-eyebrow section__eyebrow bld-eyebrow--accent"><?php echo esc_html( $eyebrow ); ?></div>
 				<?php endif; ?>
 				<?php if ( $heading ) : ?>
 				<h2 class="email-capture__title"><?php echo esc_html( $heading ); ?></h2>
@@ -80,7 +80,7 @@ $privacy_note  = (string) ( $content['privacy_note'] ?? '' );
 					</div>
 
 					<?php if ( $submit_label ) : ?>
-					<button type="submit" class="btn btn--primary btn--full newsletter-form__btn">
+					<button type="submit" class="bld-button btn btn--primary btn--full newsletter-form__btn">
 						<?php echo esc_html( $submit_label ); ?>
 					</button>
 					<?php endif; ?>
