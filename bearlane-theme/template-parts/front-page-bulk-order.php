@@ -27,13 +27,13 @@ $cta_secondary_label = (string) ( $content['cta_secondary_label'] ?? '' );
 $cta_secondary_url   = (string) ( $content['cta_secondary_url'] ?? '' );
 ?>
 
-<section class="section bulk-order-section" aria-label="<?php esc_attr_e( 'Bulk and Business Orders', 'bearlane' ); ?>">
-	<div class="container">
+<section class="bld-section section bulk-order-section" aria-label="<?php esc_attr_e( 'Bulk and Business Orders', 'bearlane' ); ?>">
+	<div class="bld-container container">
 		<div class="bulk-order-inner">
 
 			<div class="bulk-order__content">
 				<?php if ( $eyebrow ) : ?>
-				<div class="section__eyebrow section__eyebrow--light"><?php echo wp_kses_post( $eyebrow ); ?></div>
+				<div class="section__eyebrow bld-eyebrow section__eyebrow bld-eyebrow--light"><?php echo wp_kses_post( $eyebrow ); ?></div>
 				<?php endif; ?>
 				<?php if ( $heading ) : ?>
 				<h2 class="bulk-order__title"><?php echo esc_html( $heading ); ?></h2>
@@ -56,12 +56,12 @@ $cta_secondary_url   = (string) ( $content['cta_secondary_url'] ?? '' );
 				<?php if ( ( $cta_primary_label && $cta_primary_url ) || ( $cta_secondary_label && $cta_secondary_url ) ) : ?>
 				<div class="bulk-order__actions">
 					<?php if ( $cta_primary_label && $cta_primary_url ) : ?>
-					<a href="<?php echo esc_url( $cta_primary_url ); ?>" class="btn btn--primary btn--large">
+					<a href="<?php echo esc_url( $cta_primary_url ); ?>" class="bld-button btn btn--primary btn--large">
 						<?php echo esc_html( $cta_primary_label ); ?>
 					</a>
 					<?php endif; ?>
 					<?php if ( $cta_secondary_label && $cta_secondary_url ) : ?>
-					<a href="<?php echo esc_url( $cta_secondary_url ); ?>" class="btn btn--ghost btn--large">
+					<a href="<?php echo esc_url( $cta_secondary_url ); ?>" class="bld-button btn btn--ghost btn--large">
 						<?php echo esc_html( $cta_secondary_label ); ?>
 					</a>
 					<?php endif; ?>

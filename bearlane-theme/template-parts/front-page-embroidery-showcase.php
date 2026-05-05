@@ -32,8 +32,8 @@ if ( ! $cta_primary_url && class_exists( 'WooCommerce' ) ) {
 }
 ?>
 
-<section class="section embroidery-showcase-section" aria-label="<?php esc_attr_e( 'Embroidery Quality', 'bearlane' ); ?>">
-	<div class="container">
+<section class="bld-section section embroidery-showcase-section" aria-label="<?php esc_attr_e( 'Embroidery Quality', 'bearlane' ); ?>">
+	<div class="bld-container container">
 		<div class="embroidery-showcase">
 
 			<div class="embroidery-showcase__visual">
@@ -61,7 +61,7 @@ if ( ! $cta_primary_url && class_exists( 'WooCommerce' ) ) {
 
 			<div class="embroidery-showcase__content">
 				<?php if ( $eyebrow ) : ?>
-				<div class="section__eyebrow"><?php echo esc_html( $eyebrow ); ?></div>
+				<div class="section__eyebrow bld-eyebrow"><?php echo esc_html( $eyebrow ); ?></div>
 				<?php endif; ?>
 				<?php if ( $heading ) : ?>
 				<h2 class="embroidery-showcase__title"><?php echo esc_html( $heading ); ?></h2>
@@ -89,12 +89,12 @@ if ( ! $cta_primary_url && class_exists( 'WooCommerce' ) ) {
 				<?php if ( ( $cta_primary_label && $cta_primary_url ) || ( $cta_secondary_label && $cta_secondary_url ) ) : ?>
 				<div class="embroidery-showcase__actions">
 					<?php if ( $cta_primary_label && $cta_primary_url ) : ?>
-					<a href="<?php echo esc_url( $cta_primary_url ); ?>" class="btn btn--primary">
+					<a href="<?php echo esc_url( $cta_primary_url ); ?>" class="bld-button btn btn--primary">
 						<?php echo esc_html( $cta_primary_label ); ?>
 					</a>
 					<?php endif; ?>
 					<?php if ( $cta_secondary_label && $cta_secondary_url ) : ?>
-					<a href="<?php echo esc_url( $cta_secondary_url ); ?>" class="btn btn--outline">
+					<a href="<?php echo esc_url( $cta_secondary_url ); ?>" class="bld-button btn btn--outline">
 						<?php echo esc_html( $cta_secondary_label ); ?>
 					</a>
 					<?php endif; ?>

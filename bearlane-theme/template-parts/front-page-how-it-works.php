@@ -30,12 +30,12 @@ if ( empty( $steps ) ) {
 }
 ?>
 
-<section class="section how-it-works-section" aria-label="<?php esc_attr_e( 'How It Works', 'bearlane' ); ?>">
-	<div class="container">
+<section class="bld-section section how-it-works-section" aria-label="<?php esc_attr_e( 'How It Works', 'bearlane' ); ?>">
+	<div class="bld-container container">
 
 		<header class="section__header">
 			<?php if ( $eyebrow ) : ?>
-			<div class="section__eyebrow"><?php echo esc_html( $eyebrow ); ?></div>
+			<div class="section__eyebrow bld-eyebrow"><?php echo esc_html( $eyebrow ); ?></div>
 			<?php endif; ?>
 			<?php if ( $heading ) : ?>
 			<h2 class="section__title"><?php echo esc_html( $heading ); ?></h2>
@@ -74,7 +74,7 @@ if ( empty( $steps ) ) {
 		<?php if ( $cta_label || $cta_note ) : ?>
 		<div class="how-it-works-cta">
 			<?php if ( $cta_label && $cta_url ) : ?>
-			<a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--primary btn--large">
+			<a href="<?php echo esc_url( $cta_url ); ?>" class="bld-button btn btn--primary btn--large">
 				<?php echo esc_html( $cta_label ); ?>
 				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 			</a>

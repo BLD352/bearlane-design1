@@ -26,12 +26,12 @@ if ( empty( $items ) ) {
 }
 ?>
 
-<section class="section faq-section" aria-label="<?php esc_attr_e( 'Frequently Asked Questions', 'bearlane' ); ?>">
-	<div class="container">
+<section class="bld-section section faq-section" aria-label="<?php esc_attr_e( 'Frequently Asked Questions', 'bearlane' ); ?>">
+	<div class="bld-container container">
 
 		<header class="section__header">
 			<?php if ( $eyebrow ) : ?>
-			<div class="section__eyebrow"><?php echo wp_kses_post( $eyebrow ); ?></div>
+			<div class="section__eyebrow bld-eyebrow"><?php echo wp_kses_post( $eyebrow ); ?></div>
 			<?php endif; ?>
 			<?php if ( $heading ) : ?>
 			<h2 class="section__title"><?php echo esc_html( $heading ); ?></h2>
@@ -75,7 +75,7 @@ if ( empty( $items ) ) {
 			<p class="faq-footer__text"><?php echo esc_html( $footer_text ); ?></p>
 			<?php endif; ?>
 			<?php if ( $footer_label && $footer_url ) : ?>
-			<a href="<?php echo esc_url( $footer_url ); ?>" class="btn btn--outline">
+			<a href="<?php echo esc_url( $footer_url ); ?>" class="bld-button btn btn--outline">
 				<?php echo esc_html( $footer_label ); ?>
 			</a>
 			<?php endif; ?>

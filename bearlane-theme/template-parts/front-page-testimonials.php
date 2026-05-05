@@ -30,12 +30,12 @@ if ( empty( $items ) ) {
 }
 ?>
 
-<section class="section testimonials-section" aria-label="<?php esc_attr_e( 'Customer Reviews', 'bearlane' ); ?>">
-	<div class="container">
+<section class="bld-section section testimonials-section" aria-label="<?php esc_attr_e( 'Customer Reviews', 'bearlane' ); ?>">
+	<div class="bld-container container">
 
 		<header class="section__header">
 			<?php if ( $eyebrow ) : ?>
-			<div class="section__eyebrow"><?php echo esc_html( $eyebrow ); ?></div>
+			<div class="section__eyebrow bld-eyebrow"><?php echo esc_html( $eyebrow ); ?></div>
 			<?php endif; ?>
 			<?php if ( $heading ) : ?>
 			<h2 class="section__title"><?php echo wp_kses_post( $heading ); ?></h2>
@@ -109,7 +109,7 @@ if ( empty( $items ) ) {
 			</p>
 			<?php endif; ?>
 			<?php if ( $cta_label && $cta_url ) : ?>
-			<a href="<?php echo esc_url( $cta_url ); ?>" class="btn btn--outline">
+			<a href="<?php echo esc_url( $cta_url ); ?>" class="bld-button btn btn--outline">
 				<?php echo esc_html( $cta_label ); ?>
 			</a>
 			<?php endif; ?>

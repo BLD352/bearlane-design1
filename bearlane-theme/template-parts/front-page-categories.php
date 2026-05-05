@@ -52,8 +52,8 @@ if ( is_wp_error( $categories ) || empty( $categories ) ) {
 }
 ?>
 
-<section class="section categories-section" aria-label="<?php esc_attr_e( 'Shop by Category', 'bearlane' ); ?>">
-	<div class="container">
+<section class="bld-section section categories-section" aria-label="<?php esc_attr_e( 'Shop by Category', 'bearlane' ); ?>">
+	<div class="bld-container container">
 
 		<header class="section__header">
 			<?php if ( $heading ) : ?>

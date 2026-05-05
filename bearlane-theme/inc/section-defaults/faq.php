@@ -14,7 +14,7 @@ return [
 	'label'           => __( 'FAQ Accordion', 'bearlane' ),
 	'description'     => __( 'Accordion of frequently asked questions.', 'bearlane' ),
 	'icon'            => 'dashicons-editor-help',
-	'priority'        => 100,
+	'priority'        => 90,
 	'default_enabled' => true,
 	'template'        => 'template-parts/front-page-faq.php',
 	'fields'          => [

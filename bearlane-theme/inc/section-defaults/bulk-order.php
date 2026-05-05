@@ -14,7 +14,7 @@ return [
 	'label'           => __( 'Bulk Order Callout', 'bearlane' ),
 	'description'     => __( 'High-contrast CTA for teams, schools, businesses, and events.', 'bearlane' ),
 	'icon'            => 'dashicons-groups',
-	'priority'        => 90,
+	'priority'        => 100,
 	'default_enabled' => true,
 	'template'        => 'template-parts/front-page-bulk-order.php',
 	'fields'          => [
