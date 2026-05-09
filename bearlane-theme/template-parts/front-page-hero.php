@@ -31,7 +31,7 @@ $trust_items = (array) ( $content['trust_items'] ?? [] );
 $stats       = (array) ( $content['stats'] ?? [] );
 ?>
 
-<section class="hero hero--embroidery<?php echo $hero_image_url ? ' hero--has-image' : ''; ?>"
+<section class="bld-section hero hero--embroidery<?php echo $hero_image_url ? ' hero--has-image' : ''; ?>"
 	<?php if ( $hero_image_url ) : ?>
 	style="--hero-image: url('<?php echo esc_url( $hero_image_url ); ?>')"
 	<?php endif; ?>
@@ -39,7 +39,7 @@ $stats       = (array) ( $content['stats'] ?? [] );
 
 	<div class="hero__backdrop" aria-hidden="true"></div>
 
-	<div class="container hero__container">
+	<div class="bld-container container hero__container">
 		<div class="hero__content">
 
 			<?php if ( $eyebrow ) : ?>
@@ -62,13 +62,13 @@ $stats       = (array) ( $content['stats'] ?? [] );
 			<?php if ( ( $cta_primary_label && $cta_primary_url ) || ( $cta_secondary_label && $cta_secondary_url ) ) : ?>
 			<div class="hero__cta-group">
 				<?php if ( $cta_primary_label && $cta_primary_url ) : ?>
-				<a href="<?php echo esc_url( $cta_primary_url ); ?>" class="btn btn--primary btn--large hero__cta-primary">
+				<a href="<?php echo esc_url( $cta_primary_url ); ?>" class="bld-button btn btn--primary btn--large hero__cta-primary">
 					<?php echo esc_html( $cta_primary_label ); ?>
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</a>
 				<?php endif; ?>
 				<?php if ( $cta_secondary_label && $cta_secondary_url ) : ?>
-				<a href="<?php echo esc_url( $cta_secondary_url ); ?>" class="btn btn--outline btn--large hero__cta-secondary">
+				<a href="<?php echo esc_url( $cta_secondary_url ); ?>" class="bld-button btn btn--outline btn--large hero__cta-secondary">
 					<?php echo esc_html( $cta_secondary_label ); ?>
 				</a>
 				<?php endif; ?>
@@ -94,7 +94,7 @@ $stats       = (array) ( $content['stats'] ?? [] );
 
 	<?php if ( ! empty( $stats ) ) : ?>
 	<div class="hero__stats" aria-label="<?php esc_attr_e( 'Key statistics', 'bearlane' ); ?>">
-		<div class="container">
+		<div class="bld-container container">
 			<div class="hero__stats-grid">
 				<?php foreach ( $stats as $stat ) : ?>
 				<div class="hero__stat">

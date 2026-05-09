@@ -22,8 +22,8 @@ if ( empty( $items ) ) {
 }
 ?>
 
-<section class="section usp-section" aria-label="<?php esc_attr_e( 'Why BearLane', 'bearlane' ); ?>">
-	<div class="container">
+<section class="bld-section section usp-section" aria-label="<?php esc_attr_e( 'Why BearLane', 'bearlane' ); ?>">
+	<div class="bld-container container">
 
 		<header class="section__header">
 			<?php if ( $heading ) : ?>

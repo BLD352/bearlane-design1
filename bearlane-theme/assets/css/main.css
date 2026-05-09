@@ -2798,3 +2798,96 @@ h6 { font-size: var(--font-size-sm); }
 @media (min-width: 769px) {
   .sticky-atc { display: none !important; }
 }
+
+/* ============================================================
+   BearLane Homepage System (Scoped)
+   ============================================================ */
+.bld-homepage {
+  --bld-bg: #070807;
+  --bld-bg-alt: #050605;
+  --bld-text: #F6F3EA;
+  --bld-muted: rgba(246, 243, 234, 0.68);
+  --bld-lime: #B7FF00;
+  --bld-magenta: #FF2E88;
+  --bld-card-bg: rgba(255, 255, 255, 0.035);
+  --bld-card-border: rgba(255, 255, 255, 0.09);
+}
+.bld-homepage,
+.bld-homepage .section,
+.bld-homepage .hero { background-color: var(--bld-bg); color: var(--bld-text); }
+.bld-homepage .bld-container,
+.bld-homepage .container { max-width: 1180px; padding-inline: 24px; }
+.bld-homepage .bld-section,
+.bld-homepage .section,
+.bld-homepage .hero { padding-block: 110px; }
+.bld-homepage h1,
+.bld-homepage .hero__heading { font-size: clamp(48px, 7vw, 86px); line-height: 1.03; letter-spacing: -0.02em; color: var(--bld-text); }
+.bld-homepage h2,
+.bld-homepage .section__title { font-size: clamp(34px, 5vw, 58px); line-height: 1.08; letter-spacing: -0.015em; color: var(--bld-text); }
+.bld-homepage p,
+.bld-homepage .section__subtitle,
+.bld-homepage .hero__subheading { font-size: clamp(16px, 1.4vw, 18px); color: var(--bld-muted); line-height: 1.65; }
+.bld-homepage .bld-eyebrow,
+.bld-homepage .section__eyebrow { color: var(--bld-lime); text-transform: uppercase; letter-spacing: 0.14em; font-size: clamp(11px, 1vw, 13px); font-weight: 700; }
+.bld-homepage .hero__container { display:grid; grid-template-columns: 48% 52%; gap: 2rem; align-items: center; }
+.bld-homepage .hero__media,
+.bld-homepage .hero__image-wrap,
+.bld-homepage .hero__image-card { border-radius: 18px; border: 1px solid var(--bld-card-border); background: linear-gradient(170deg, rgba(183,255,0,.12), rgba(255,46,136,.07) 60%, rgba(255,255,255,.02)); box-shadow: 0 10px 30px rgba(0,0,0,.24); }
+.bld-homepage .bld-button,
+.bld-homepage .btn,
+.bld-homepage .button,
+.bld-homepage .wp-element-button { border-radius: 999px; padding: 0.92rem 1.35rem; font-weight: 700; transition: all .24s ease; }
+.bld-homepage .btn--primary,
+.bld-homepage .bld-button.btn--primary { background: var(--bld-lime); color: #070807; border:1px solid var(--bld-lime); }
+.bld-homepage .btn--primary:hover { transform: translateY(-1px); filter: brightness(.96); }
+.bld-homepage .btn--outline,
+.bld-homepage .btn--secondary { background: transparent; border:1px solid var(--bld-card-border); color: var(--bld-text); }
+.bld-homepage .btn--outline:hover { border-color: var(--bld-lime); color: var(--bld-lime); }
+.bld-homepage .bld-card,
+.bld-homepage .category-card,
+.bld-homepage .product-card,
+.bld-homepage .testimonial-card,
+.bld-homepage .value-card,
+.bld-homepage .process-card,
+.bld-homepage .faq-item { background: var(--bld-card-bg); border:1px solid var(--bld-card-border); border-radius:18px; padding: 1.4rem; min-height: 100%; box-shadow: 0 6px 16px rgba(0,0,0,.18); }
+.bld-homepage .categories-grid,
+.bld-homepage .products-grid,
+.bld-homepage .testimonials-grid,
+.bld-homepage .value-grid,
+.bld-homepage .faq-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.15rem; }
+.bld-homepage .section__header { margin-bottom: clamp(1.8rem, 4vw, 3rem); }
+.bld-homepage .section + .section,
+.bld-homepage .bld-section + .bld-section { border-top: 1px solid rgba(255,255,255,.05); }
+.bld-homepage .email-capture-section,
+.bld-homepage .bulk-order-section,
+.bld-homepage .testimonials-section,
+.bld-homepage .faq-section,
+.bld-homepage .footer-widgets,
+.bld-homepage footer.site-footer { background: var(--bld-bg-alt); }
+
+@media (max-width: 1024px) {
+  .bld-homepage .bld-section,
+  .bld-homepage .section,
+  .bld-homepage .hero { padding-block: 80px; }
+  .bld-homepage .hero__container,
+  .bld-homepage .split-layout { grid-template-columns: 1fr 1fr; }
+  .bld-homepage .categories-grid,
+  .bld-homepage .products-grid,
+  .bld-homepage .testimonials-grid,
+  .bld-homepage .value-grid,
+  .bld-homepage .faq-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 767px) {
+  .bld-homepage .bld-container,
+  .bld-homepage .container { padding-inline: 18px; }
+  .bld-homepage .bld-section,
+  .bld-homepage .section,
+  .bld-homepage .hero { padding-block: 64px; }
+  .bld-homepage .hero__container,
+  .bld-homepage .split-layout,
+  .bld-homepage .categories-grid,
+  .bld-homepage .products-grid,
+  .bld-homepage .testimonials-grid,
+  .bld-homepage .value-grid,
+  .bld-homepage .faq-grid { grid-template-columns: 1fr; }
+}

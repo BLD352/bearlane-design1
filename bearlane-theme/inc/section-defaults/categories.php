@@ -14,7 +14,7 @@ return [
 	'label'           => __( 'Category Showcase', 'bearlane' ),
 	'description'     => __( 'Grid of WooCommerce product categories. Pick specific categories or auto-fill.', 'bearlane' ),
 	'icon'            => 'dashicons-category',
-	'priority'        => 40,
+	'priority'        => 30,
 	'default_enabled' => true,
 	'template'        => 'template-parts/front-page-categories.php',
 	'fields'          => [

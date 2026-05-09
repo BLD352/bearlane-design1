@@ -81,13 +81,13 @@ if ( ! $footer_url ) {
 }
 ?>
 
-<section class="section best-sellers-section" aria-label="<?php esc_attr_e( 'Shop Our Collection', 'bearlane' ); ?>">
-	<div class="container">
+<section class="bld-section section best-sellers-section" aria-label="<?php esc_attr_e( 'Shop Our Collection', 'bearlane' ); ?>">
+	<div class="bld-container container">
 
 		<div class="best-sellers-header">
 			<div class="best-sellers-header__text">
 				<?php if ( $eyebrow ) : ?>
-				<div class="section__eyebrow"><?php echo esc_html( $eyebrow ); ?></div>
+				<div class="section__eyebrow bld-eyebrow"><?php echo esc_html( $eyebrow ); ?></div>
 				<?php endif; ?>
 				<?php if ( $heading ) : ?>
 				<h2 class="section__title"><?php echo esc_html( $heading ); ?></h2>
@@ -123,7 +123,7 @@ if ( ! $footer_url ) {
 		<?php endforeach; ?>
 
 		<div class="best-sellers-footer">
-			<a href="<?php echo esc_url( $footer_url ); ?>" class="btn btn--outline">
+			<a href="<?php echo esc_url( $footer_url ); ?>" class="bld-button btn btn--outline">
 				<?php echo esc_html( $footer_label ); ?>
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 			</a>
