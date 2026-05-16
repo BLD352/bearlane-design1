@@ -1,0 +1,175 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  OWNER
+  MANAGER
+  PRODUCTION_OPERATOR
+  DESIGNER
+  CUSTOMER
+}
+
+enum ProjectStatus {
+  DRAFT
+  PROOF_SENT
+  REVISION_REQUESTED
+  APPROVED
+  PRODUCTION
+  QC
+  COMPLETED
+  ARCHIVED
+}
+
+enum ProductionStage {
+  READY
+  RUNNING
+  QC
+  COMPLETED
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum FileKind {
+  EMBROIDERY
+  ARTWORK
+  PROOF
+  REFERENCE
+  LOGO
+}
+
+model Workspace {
+  id           String   @id @default(cuid())
+  clerkOrgId   String?  @unique
+  ownerClerkId String?  @unique
+  name         String   @default("Texoryx Workspace")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  users          User[]
+  customers      Customer[]
+  projects       Project[]
+  approvals      Approval[]
+  files          FileAsset[]
+  productionJobs ProductionJob[]
+}
+
+model User {
+  id          String   @id @default(cuid())
+  workspaceId String
+  clerkId     String   @unique
+  email       String
+  name        String?
+  role        Role     @default(CUSTOMER)
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, email])
+  @@index([workspaceId])
+}
+
+model Customer {
+  id          String   @id @default(cuid())
+  workspaceId String
+  name        String
+  company     String?
+  email       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  projects    Project[]
+  files       FileAsset[]
+
+  @@unique([workspaceId, email])
+  @@index([workspaceId])
+  @@index([workspaceId, name])
+  @@index([workspaceId, company])
+}
+
+model Project {
+  id             String        @id @default(cuid())
+  workspaceId    String
+  customerId     String
+  title          String
+  status         ProjectStatus @default(DRAFT)
+  deadline       DateTime?
+  orderQuantity  Int           @default(1)
+  priority       Int           @default(2)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  workspace      Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  customer       Customer      @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  approvals      Approval[]
+  productionJobs ProductionJob[]
+
+  @@index([workspaceId])
+  @@index([workspaceId, status])
+  @@index([workspaceId, deadline])
+}
+
+model Approval {
+  id          String         @id @default(cuid())
+  workspaceId String
+  projectId   String
+  token       String         @unique
+  status      ApprovalStatus @default(PENDING)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  workspace   Workspace      @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  project     Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@index([workspaceId, status])
+}
+
+model FileAsset {
+  id          String   @id @default(cuid())
+  workspaceId String
+  customerId  String?
+  kind        FileKind
+  name        String
+  extension   String
+  sizeBytes   Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  customer    Customer? @relation(fields: [customerId], references: [id], onDelete: SetNull)
+
+  @@index([workspaceId])
+  @@index([workspaceId, kind])
+  @@index([workspaceId, extension])
+}
+
+model ProductionJob {
+  id               String          @id @default(cuid())
+  workspaceId      String
+  projectId        String
+  stage            ProductionStage @default(READY)
+  machineName      String?
+  runQuantity      Int             @default(1)
+  estimatedMinutes Int             @default(30)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  workspace        Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  project          Project         @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@index([workspaceId, stage])
+}
