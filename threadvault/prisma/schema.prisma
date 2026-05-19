@@ -1,0 +1,179 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  OWNER
+  MANAGER
+  OPERATOR
+  DESIGNER
+  CUSTOMER
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CHANGES_REQUESTED
+}
+
+model Workspace {
+  id           String           @id @default(cuid())
+  name         String
+  slug         String           @unique
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  users        User[]
+  customers    Customer[]
+  projects     Project[]
+  files        FileAsset[]
+  approvals    Approval[]
+  machineSettings MachineSetting[]
+  productionNotes ProductionNote[]
+  tags         Tag[]
+  activities   ActivityLog[]
+}
+
+model User {
+  id           String     @id @default(cuid())
+  clerkId      String     @unique
+  email        String     @unique
+  name         String?
+  role         UserRole
+  workspaceId  String
+  workspace    Workspace  @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  approvals    Approval[] @relation("ApprovalActor")
+  notes        ProductionNote[] @relation("NoteAuthor")
+}
+
+model Customer {
+  id           String      @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  name         String
+  email        String?
+  company      String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  projects     Project[]
+  files        FileAsset[]
+  approvals    Approval[]
+  notes        ProductionNote[]
+}
+
+model Project {
+  id           String      @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  customerId   String
+  customer     Customer    @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  name         String
+  description  String?
+  isRepeatOrder Boolean    @default(false)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  files        FileAsset[]
+  notes        ProductionNote[]
+}
+
+model FileAsset {
+  id           String      @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  customerId   String?
+  customer     Customer?   @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  projectId    String?
+  project      Project?    @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  filename     String
+  mimeType     String
+  sizeBytes    Int
+  storageKey   String      @unique
+  createdAt    DateTime    @default(now())
+
+  versions     FileVersion[]
+  tags         Tag[]
+}
+
+model FileVersion {
+  id           String      @id @default(cuid())
+  fileAssetId  String
+  fileAsset    FileAsset   @relation(fields: [fileAssetId], references: [id], onDelete: Cascade)
+  version      Int
+  storageKey   String      @unique
+  checksum     String?
+  createdAt    DateTime    @default(now())
+
+  @@unique([fileAssetId, version])
+}
+
+model Approval {
+  id           String         @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace      @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  customerId   String
+  customer     Customer       @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  actorId      String?
+  actor        User?          @relation("ApprovalActor", fields: [actorId], references: [id], onDelete: SetNull)
+  status       ApprovalStatus @default(PENDING)
+  comment      String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model MachineSetting {
+  id           String      @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  name         String
+  value        String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model ProductionNote {
+  id           String      @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  customerId   String?
+  customer     Customer?   @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  projectId    String?
+  project      Project?    @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  authorId     String?
+  author       User?       @relation("NoteAuthor", fields: [authorId], references: [id], onDelete: SetNull)
+  content      String
+  createdAt    DateTime    @default(now())
+}
+
+model Tag {
+  id           String      @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  name         String
+  files        FileAsset[]
+
+  @@unique([workspaceId, name])
+}
+
+model ActivityLog {
+  id           String      @id @default(cuid())
+  workspaceId  String
+  workspace    Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  action       String
+  entityType   String
+  entityId     String
+  metadata     Json?
+  createdAt    DateTime    @default(now())
+
+  @@index([workspaceId, createdAt])
+}
