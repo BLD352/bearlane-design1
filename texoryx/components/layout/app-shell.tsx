@@ -1,15 +1,11 @@
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
-import { Boxes, CheckCircle2, FolderKanban, Gauge, Library, Settings, Users } from "lucide-react";
+import { Gauge, Users, Library } from "lucide-react";
 
 const nav = [
   { href: "/dashboard", label: "Dashboard", icon: Gauge },
-  { href: "/customers", label: "Customers", icon: Users },
-  { href: "/library", label: "Library", icon: Library },
-  { href: "/projects", label: "Projects", icon: FolderKanban },
-  { href: "/production", label: "Production", icon: Boxes },
-  { href: "/approvals", label: "Approvals", icon: CheckCircle2 },
-  { href: "/settings", label: "Settings", icon: Settings }
+  { href: "/customers", label: "Customer Vault", icon: Users },
+  { href: "/library", label: "Upload Library", icon: Library }
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -17,8 +13,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen lg:grid lg:grid-cols-[280px_1fr]">
       <aside className="border-r border-white/10 bg-black/55 p-5 backdrop-blur">
         <div className="mb-8">
-          <p className="text-xs uppercase tracking-[0.45em] text-red-300">Texoryx OS</p>
-          <h1 className="mt-2 text-3xl font-black tracking-tight">Texoryx</h1>
+          <p className="text-xs uppercase tracking-[0.45em] text-red-300">ThreadVault OS</p>
+          <h1 className="mt-2 text-3xl font-black tracking-tight">ThreadVault</h1>
         </div>
         <nav className="space-y-2">
           {nav.map((item) => (
@@ -32,8 +28,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <main className="min-w-0">
         <header className="flex items-center justify-between border-b border-white/10 bg-black/30 px-6 py-4 backdrop-blur">
           <div>
-            <p className="text-sm text-stone-400">Embroidery • DTF • Apparel production</p>
-            <h2 className="text-xl font-semibold">Production command center</h2>
+            <p className="text-sm text-stone-400">Embroidery workflow + customer vault + production OS</p>
+            <h2 className="text-xl font-semibold">Sprint 1A Dashboard Shell</h2>
           </div>
           <UserButton />
         </header>
